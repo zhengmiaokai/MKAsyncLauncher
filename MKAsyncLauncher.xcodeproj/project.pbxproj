@@ -1,0 +1,352 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9567BEB22645B5ED00178D22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567BEB12645B5ED00178D22 /* AppDelegate.m */; };
+		9567BEB82645B5ED00178D22 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567BEB72645B5ED00178D22 /* ViewController.m */; };
+		9567BEBB2645B5ED00178D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9567BEB92645B5ED00178D22 /* Main.storyboard */; };
+		9567BEBD2645B5EF00178D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9567BEBC2645B5EF00178D22 /* Assets.xcassets */; };
+		9567BEC02645B5EF00178D22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9567BEBE2645B5EF00178D22 /* LaunchScreen.storyboard */; };
+		9567BEC32645B5EF00178D22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567BEC22645B5EF00178D22 /* main.m */; };
+		9567BECC2645B61100178D22 /* MKAsyncLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567BECA2645B61100178D22 /* MKAsyncLauncher.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9567BEAD2645B5ED00178D22 /* MKAsyncLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKAsyncLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9567BEB02645B5ED00178D22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9567BEB12645B5ED00178D22 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9567BEB62645B5ED00178D22 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9567BEB72645B5ED00178D22 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9567BEBA2645B5ED00178D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9567BEBC2645B5EF00178D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9567BEBF2645B5EF00178D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9567BEC12645B5EF00178D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9567BEC22645B5EF00178D22 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9567BECA2645B61100178D22 /* MKAsyncLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKAsyncLauncher.m; sourceTree = "<group>"; };
+		9567BECB2645B61100178D22 /* MKAsyncLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKAsyncLauncher.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9567BEAA2645B5ED00178D22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9567BEA42645B5ED00178D22 = {
+			isa = PBXGroup;
+			children = (
+				9567BEAF2645B5ED00178D22 /* MKAsyncLauncher */,
+				9567BEAE2645B5ED00178D22 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9567BEAE2645B5ED00178D22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9567BEAD2645B5ED00178D22 /* MKAsyncLauncher.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9567BEAF2645B5ED00178D22 /* MKAsyncLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				9567BEC92645B61100178D22 /* AsyncLauncher */,
+				9567BEB02645B5ED00178D22 /* AppDelegate.h */,
+				9567BEB12645B5ED00178D22 /* AppDelegate.m */,
+				9567BEB62645B5ED00178D22 /* ViewController.h */,
+				9567BEB72645B5ED00178D22 /* ViewController.m */,
+				9567BEB92645B5ED00178D22 /* Main.storyboard */,
+				9567BEBC2645B5EF00178D22 /* Assets.xcassets */,
+				9567BEBE2645B5EF00178D22 /* LaunchScreen.storyboard */,
+				9567BEC12645B5EF00178D22 /* Info.plist */,
+				9567BEC22645B5EF00178D22 /* main.m */,
+			);
+			path = MKAsyncLauncher;
+			sourceTree = "<group>";
+		};
+		9567BEC92645B61100178D22 /* AsyncLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				9567BECB2645B61100178D22 /* MKAsyncLauncher.h */,
+				9567BECA2645B61100178D22 /* MKAsyncLauncher.m */,
+			);
+			path = AsyncLauncher;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9567BEAC2645B5ED00178D22 /* MKAsyncLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9567BEC62645B5EF00178D22 /* Build configuration list for PBXNativeTarget "MKAsyncLauncher" */;
+			buildPhases = (
+				9567BEA92645B5ED00178D22 /* Sources */,
+				9567BEAA2645B5ED00178D22 /* Frameworks */,
+				9567BEAB2645B5ED00178D22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MKAsyncLauncher;
+			productName = MKAsyncLauncher;
+			productReference = 9567BEAD2645B5ED00178D22 /* MKAsyncLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9567BEA52645B5ED00178D22 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = zhengmiaokai;
+				TargetAttributes = {
+					9567BEAC2645B5ED00178D22 = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 9567BEA82645B5ED00178D22 /* Build configuration list for PBXProject "MKAsyncLauncher" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9567BEA42645B5ED00178D22;
+			productRefGroup = 9567BEAE2645B5ED00178D22 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9567BEAC2645B5ED00178D22 /* MKAsyncLauncher */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9567BEAB2645B5ED00178D22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9567BEC02645B5EF00178D22 /* LaunchScreen.storyboard in Resources */,
+				9567BEBD2645B5EF00178D22 /* Assets.xcassets in Resources */,
+				9567BEBB2645B5ED00178D22 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9567BEA92645B5ED00178D22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9567BEB82645B5ED00178D22 /* ViewController.m in Sources */,
+				9567BEB22645B5ED00178D22 /* AppDelegate.m in Sources */,
+				9567BEC32645B5EF00178D22 /* main.m in Sources */,
+				9567BECC2645B61100178D22 /* MKAsyncLauncher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9567BEB92645B5ED00178D22 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9567BEBA2645B5ED00178D22 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9567BEBE2645B5EF00178D22 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9567BEBF2645B5EF00178D22 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9567BEC42645B5EF00178D22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9567BEC52645B5EF00178D22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9567BEC72645B5EF00178D22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MKAsyncLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phone.test.MKAsyncLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9567BEC82645B5EF00178D22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MKAsyncLauncher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.phone.test.MKAsyncLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9567BEA82645B5ED00178D22 /* Build configuration list for PBXProject "MKAsyncLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9567BEC42645B5EF00178D22 /* Debug */,
+				9567BEC52645B5EF00178D22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9567BEC62645B5EF00178D22 /* Build configuration list for PBXNativeTarget "MKAsyncLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9567BEC72645B5EF00178D22 /* Debug */,
+				9567BEC82645B5EF00178D22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9567BEA52645B5ED00178D22 /* Project object */;
+}
