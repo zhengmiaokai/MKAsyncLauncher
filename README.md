@@ -1,30 +1,33 @@
 # MKAsyncLauncher
+
+##具体使用
 、、、
+
     self.launcher = [[MKAsyncLauncher alloc] init];
     
-    MKAsyncModel* test1 = [MKAsyncModel modelWithPriority:3 useMultiThread:NO asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test1");
+    MKAsyncModel* firstModel = [MKAsyncModel modelWithPriority:1 useMultiThread:NO asyncBlock:^{
+        NSLog(@"MKAsyncLauncher: ==== firstModel");
         sleep(1);
     }];
-    [_launcher addAsyncModel:test1];
+    [_launcher addAsyncModel:firstModel];
     
-    MKAsyncModel* test2 = [MKAsyncModel modelWithPriority:2 useMultiThread:YES asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test2");
+    MKAsyncModel* secondModel = [MKAsyncModel modelWithPriority:2 useMultiThread:YES asyncBlock:^{
+        NSLog(@"MKAsyncLauncher: ==== secondModel");
         sleep(1);
     }];
-    [_launcher addAsyncModel:test2];
+    [_launcher addAsyncModel:secondModel];
     
-    MKAsyncModel* test3 = [MKAsyncModel modelWithPriority:2 useMultiThread:NO asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test3");
+    MKAsyncModel* secondModel1 = [MKAsyncModel modelWithPriority:2 useMultiThread:NO asyncBlock:^{
+        NSLog(@"MKAsyncLauncher: ==== secondModel1");
         sleep(1);
     }];
-    [_launcher addAsyncModel:test3];
+    [_launcher addAsyncModel:secondModel1];
     
-    MKAsyncModel* test4 = [MKAsyncModel modelWithPriority:1 useMultiThread:YES asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test4");
+    MKAsyncModel* thirdModel = [MKAsyncModel modelWithPriority:3 useMultiThread:YES asyncBlock:^{
+        NSLog(@"MKAsyncLauncher: ==== thirdModel");
         sleep(1);
     }];
-    [_launcher addAsyncModel:test4];
+    [_launcher addAsyncModel:thirdModel];
     
     [_launcher start:^(NSArray * _Nonnull asyncSets) {
         NSLog(@"MKAsyncLauncher: ==== over");
