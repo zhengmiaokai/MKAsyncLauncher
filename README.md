@@ -1,7 +1,8 @@
 # MKAsyncLauncher
 
-、  self.launcher = [[MKAsyncLauncher alloc] init];
-    
+
+   、self.launcher = [[MKAsyncLauncher alloc] init];、
+   
     MKAsyncModel* test1 = [MKAsyncModel modelWithPriority:3 useMultiThread:NO asyncBlock:^{
         NSLog(@"MKAsyncLauncher: ==== test1");
         sleep(1);
