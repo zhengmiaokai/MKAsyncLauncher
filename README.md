@@ -2,8 +2,8 @@
 
 
 #具体使用
-、、、
-
+ 、this、
+ 
     self.launcher = [[MKAsyncLauncher alloc] init];
     
     MKAsyncModel* firstModel = [MKAsyncModel modelWithPriority:1 useMultiThread:NO asyncBlock:^{
@@ -33,4 +33,3 @@
     [_launcher start:^(NSArray * _Nonnull asyncSets) {
         NSLog(@"MKAsyncLauncher: ==== over");
     }];
-、、、
