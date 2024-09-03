@@ -8,28 +8,30 @@
 
 #import "MKAsyncLauncher.h"
 
-@interface MKAsyncModel ()
+@interface MKAsyncTask ()
 
-@property (nonatomic, assign) NSUInteger priority;  /// default 1, 1优先级最大，1+逐步递减
-@property (nonatomic, assign) BOOL useMultiThread;     /// default NO, 是否在子线程执行
-@property (nonatomic, copy) void (^asyncBlock)(void);
+@property (nonatomic, assign) MKAsyncPriority priority;   // default: 0
+@property (nonatomic, assign) BOOL useMultiThread;        // default: NO
+@property (nonatomic, copy) void (^handler)(void);
 
 @property (nonatomic, copy) NSString* identify;
 
 @end
 
-@implementation MKAsyncModel
+@implementation MKAsyncTask
 
-+ (instancetype)modelWithPriority:(NSUInteger)priority useMultiThread:(BOOL)useMultiThread asyncBlock:(void (^)(void))asyncBlock {
-    MKAsyncModel* model = [[MKAsyncModel alloc] init];
-    model.priority = priority;
-    model.useMultiThread = useMultiThread;
-    model.asyncBlock = asyncBlock;
-    return model;
+- (instancetype)initWithPriority:(MKAsyncPriority)priority useMultiThread:(BOOL)useMultiThread handler:(void (^)(void))handler {
+    self = [super init];
+    if (self) {
+        self.priority = priority;
+        self.useMultiThread = useMultiThread;
+        self.handler = handler;
+    }
+    return self;
 }
 
-+ (instancetype)modelWithAsyncBlock:(void (^)(void))asyncBlock {
-    return [self modelWithPriority:1 useMultiThread:NO asyncBlock:asyncBlock];
+- (instancetype)initWithHandler:(void (^)(void))handler {
+    return [self initWithPriority:MKAsyncPriorityDefault useMultiThread:NO handler:handler];
 }
 
 @end
@@ -39,10 +41,10 @@
 @property (nonatomic, strong) NSMutableArray* asyncSets;
 @property (nonatomic, strong) NSMutableDictionary* prioritySets;
 
-@property (nonatomic, strong) dispatch_group_t gcdGroup;
-@property (nonatomic, strong) dispatch_queue_t gcdQueue;
+@property (nonatomic, strong) dispatch_group_t group;
+@property (nonatomic, strong) dispatch_queue_t queue;
 
-@property (nonatomic, copy) void (^completion)(NSArray *asyncSets);
+@property (nonatomic, copy) void (^completionHandler)(NSArray *asyncSets);
 
 @end
 
@@ -53,34 +55,34 @@
     if (self) {
         self.asyncSets = [NSMutableArray array];
         self.prioritySets = [NSMutableDictionary dictionary];
-        self.gcdGroup = dispatch_group_create();
-        self.gcdQueue = dispatch_queue_create("LAUNCH_CONCURRENT_QUEUE", DISPATCH_QUEUE_CONCURRENT);
+        self.group = dispatch_group_create();
+        self.queue = dispatch_queue_create("LAUNCH_CONCURRENT_QUEUE", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
 }
 
-- (void)addAsyncModel:(MKAsyncModel *)asyncModel {
-    if (asyncModel) {
-        asyncModel.identify = [NSString stringWithFormat:@"%lu", (unsigned long)_asyncSets.count];
-        [_asyncSets addObject:asyncModel];
+- (void)addAsyncTask:(MKAsyncTask *)asyncTask {
+    if (asyncTask) {
+        asyncTask.identify = [NSString stringWithFormat:@"%lu", (unsigned long)_asyncSets.count];
+        [_asyncSets addObject:asyncTask];
         
-        NSMutableArray* priorityArr = [_prioritySets objectForKey:@(asyncModel.priority)];
+        NSMutableArray* priorityArr = [_prioritySets objectForKey:@(asyncTask.priority)];
         if (priorityArr) {
-            [priorityArr addObject:asyncModel];
+            [priorityArr addObject:asyncTask];
         } else {
             priorityArr = [NSMutableArray array];
-            [priorityArr addObject:asyncModel];
-            [_prioritySets setObject:priorityArr forKey:@(asyncModel.priority)];
+            [priorityArr addObject:asyncTask];
+            [_prioritySets setObject:priorityArr forKey:@(asyncTask.priority)];
         }
     }
 }
 
-- (void)start:(void (^)(NSArray* asyncSets))completion {
-    self.completion = completion;
+- (void)start:(void (^)(NSArray* asyncSets))completionHandler {
+    self.completionHandler = completionHandler;
     
     if (_prioritySets.count > 0) {
         NSArray* allKeys = [[_prioritySets allKeys] sortedArrayUsingComparator:^NSComparisonResult(NSNumber*  _Nonnull obj1, NSNumber*  _Nonnull obj2) {
-            if (obj1.intValue < obj2.intValue) {
+            if (obj1.intValue > obj2.intValue) {
                 return NSOrderedAscending;
             } else {
                 return NSOrderedDescending;
@@ -88,16 +90,16 @@
         }];
         [self taskSettings:allKeys index:0];
     } else {
-        if (_completion) {
-            _completion(_asyncSets);
+        if (_completionHandler) {
+            _completionHandler(_asyncSets);
         }
     }
 }
 
 - (void)taskSettings:(NSArray *)allKeys index:(NSInteger)index {
-    if (allKeys.count <= index) { /// 结束递归
-        if (_completion) {
-            _completion(_asyncSets);
+    if (allKeys.count <= index) { // 结束递归
+        if (_completionHandler) {
+            _completionHandler(_asyncSets);
         }
         return;
     }
@@ -105,21 +107,21 @@
     NSNumber* priorityKey = [allKeys objectAtIndex:index];
     NSArray* priorityArr = [_prioritySets objectForKey:priorityKey];
     
-    for (MKAsyncModel* asyncModel in priorityArr) {
+    for (MKAsyncTask* asyncTask in priorityArr) {
         void (^block)(void) = ^{
-            asyncModel.startTime = [[NSDate date] timeIntervalSince1970];
-            asyncModel.asyncBlock();
-            asyncModel.endTime = [[NSDate date] timeIntervalSince1970];
+            asyncTask.startTime = [[NSDate date] timeIntervalSince1970];
+            asyncTask.handler();
+            asyncTask.endTime = [[NSDate date] timeIntervalSince1970];
         };
         
-        if (asyncModel.useMultiThread == NO) {
-            dispatch_group_async(_gcdGroup, dispatch_get_main_queue(), block);
+        if (asyncTask.useMultiThread == NO) {
+            dispatch_group_async(_group, dispatch_get_main_queue(), block);
         } else {
-            dispatch_group_async(_gcdGroup, _gcdQueue, block);
+            dispatch_group_async(_group, _queue, block);
         }
     }
     
-    dispatch_group_notify(_gcdGroup, dispatch_get_main_queue(), ^{
+    dispatch_group_notify(_group, dispatch_get_main_queue(), ^{
         [self taskSettings:allKeys index:index + 1];
     });
 }

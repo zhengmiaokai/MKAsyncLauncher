@@ -10,14 +10,23 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKAsyncModel : NSObject
+typedef enum : NSUInteger {
+    MKAsyncPriorityVeryLow  = -2,
+    MKAsyncPriorityLow      = -1,
+    MKAsyncPriorityDefault  = 0,
+    MKAsyncPriorityHigh     = 1,
+    MKAsyncPriorityVeryHigh = 2,
+} MKAsyncPriority;
+
+@interface MKAsyncTask : NSObject
 
 @property (nonatomic, assign) NSTimeInterval startTime;
 @property (nonatomic, assign) NSTimeInterval endTime;
 
-+ (instancetype)modelWithPriority:(NSUInteger)priority useMultiThread:(BOOL)useMultiThread asyncBlock:(void (^)(void))asyncBlock;
+- (instancetype)initWithPriority:(MKAsyncPriority)priority
+                  useMultiThread:(BOOL)useMultiThread handler:(void (^)(void))handler;
 
-+ (instancetype)modelWithAsyncBlock:(void (^)(void))asyncBlock;
+- (instancetype)initWithHandler:(void (^)(void))handler;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 
@@ -25,9 +34,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKAsyncLauncher : NSObject
 
-- (void)addAsyncModel:(MKAsyncModel *)asyncModel;
+- (void)addAsyncTask:(MKAsyncTask *)asyncTask;
 
-- (void)start:(void (^)(NSArray* asyncSets))completion;
+- (void)start:(void (^)(NSArray* asyncSets))completionHandler;
 
 @end
 

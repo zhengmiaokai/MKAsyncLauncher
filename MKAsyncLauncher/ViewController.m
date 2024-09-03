@@ -29,44 +29,35 @@
 - (void)creatLauncher {
     self.launcher = [[MKAsyncLauncher alloc] init];
     
-    MKAsyncModel* test1 = [MKAsyncModel modelWithPriority:3 useMultiThread:NO asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test1");
-        sleep(1);
+    MKAsyncTask* highTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityHigh useMultiThread:NO handler:^{
+        NSLog(@"MKAsyncLauncher: high");
     }];
-    [_launcher addAsyncModel:test1];
+    [_launcher addAsyncTask:highTask];
     
-    MKAsyncModel* test2 = [MKAsyncModel modelWithPriority:3 useMultiThread:YES asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test2");
+    MKAsyncTask* veryLowTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityVeryLow useMultiThread:YES handler:^{
         sleep(1);
+        NSLog(@"MKAsyncLauncher: veryLow");
     }];
-    [_launcher addAsyncModel:test2];
+    [_launcher addAsyncTask:veryLowTask];
     
-    MKAsyncModel* test3 = [MKAsyncModel modelWithPriority:2 useMultiThread:NO asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test3");
-        sleep(1);
+    MKAsyncTask* lowTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityLow useMultiThread:YES handler:^{
+        NSLog(@"MKAsyncLauncher: low");
     }];
-    [_launcher addAsyncModel:test3];
+    [_launcher addAsyncTask:lowTask];
     
-    MKAsyncModel* test4 = [MKAsyncModel modelWithPriority:2 useMultiThread:YES asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test4");
-        sleep(1);
+    MKAsyncTask* veryHighTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityVeryHigh useMultiThread:NO handler:^{
+        NSLog(@"MKAsyncLauncher: veryHigh");
     }];
-    [_launcher addAsyncModel:test4];
+    [_launcher addAsyncTask:veryHighTask];
     
-    MKAsyncModel* test5 = [MKAsyncModel modelWithPriority:1 useMultiThread:YES asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test5");
+    MKAsyncTask* defaultTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityDefault useMultiThread:YES handler:^{
         sleep(1);
+        NSLog(@"MKAsyncLauncher: default");
     }];
-    [_launcher addAsyncModel:test5];
-    
-    MKAsyncModel* test6 = [MKAsyncModel modelWithPriority:0 useMultiThread:YES asyncBlock:^{
-        NSLog(@"MKAsyncLauncher: ==== test6");
-        sleep(1);
-    }];
-    [_launcher addAsyncModel:test6];
+    [_launcher addAsyncTask:defaultTask];
     
     [_launcher start:^(NSArray * _Nonnull asyncSets) {
-        NSLog(@"MKAsyncLauncher: ==== over");
+        NSLog(@"MKAsyncLauncher: over");
     }];
 }
 
