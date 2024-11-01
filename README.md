@@ -1,34 +1,37 @@
 # MKAsyncLauncher
 
 # 具体使用
-```
-self.launcher = [[MKAsyncLauncher alloc] init];
+```objective-c
+    self.launcher = [[MKAsyncLauncher alloc] init];
     
-MKAsyncModel* firstModel = [MKAsyncModel modelWithPriority:1 useMultiThread:NO asyncBlock:^{
-    NSLog(@"MKAsyncLauncher: ==== firstModel");
-    sleep(1);
-}];
-[_launcher addAsyncModel:firstModel];
-
-MKAsyncModel* secondModel = [MKAsyncModel modelWithPriority:2 useMultiThread:YES asyncBlock:^{
-    NSLog(@"MKAsyncLauncher: ==== secondModel");
-    sleep(1);
-}];
-[_launcher addAsyncModel:secondModel];
+    MKAsyncTask* highTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityHigh useMultiThread:NO handler:^{
+        NSLog(@"MKAsyncLauncher: high");
+    }];
+    [_launcher addAsyncTask:highTask];
     
-MKAsyncModel* secondModel1 = [MKAsyncModel modelWithPriority:2 useMultiThread:NO asyncBlock:^{
-    NSLog(@"MKAsyncLauncher: ==== secondModel1");
-    sleep(1);
-}];
-[_launcher addAsyncModel:secondModel1];
+    MKAsyncTask* veryLowTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityVeryLow useMultiThread:YES handler:^{
+        sleep(1);
+        NSLog(@"MKAsyncLauncher: veryLow");
+    }];
+    [_launcher addAsyncTask:veryLowTask];
     
-MKAsyncModel* thirdModel = [MKAsyncModel modelWithPriority:3 useMultiThread:YES asyncBlock:^{
-    NSLog(@"MKAsyncLauncher: ==== thirdModel");
-    sleep(1);
-}];
-[_launcher addAsyncModel:thirdModel];
+    MKAsyncTask* lowTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityLow useMultiThread:YES handler:^{
+        NSLog(@"MKAsyncLauncher: low");
+    }];
+    [_launcher addAsyncTask:lowTask];
     
-[_launcher start:^(NSArray * _Nonnull asyncSets) {
-    NSLog(@"MKAsyncLauncher: ==== over");
-}];
+    MKAsyncTask* veryHighTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityVeryHigh useMultiThread:NO handler:^{
+        NSLog(@"MKAsyncLauncher: veryHigh");
+    }];
+    [_launcher addAsyncTask:veryHighTask];
+    
+    MKAsyncTask* defaultTask = [[MKAsyncTask alloc] initWithPriority:MKAsyncPriorityDefault useMultiThread:YES handler:^{
+        sleep(1);
+        NSLog(@"MKAsyncLauncher: default");
+    }];
+    [_launcher addAsyncTask:defaultTask];
+    
+    [_launcher start:^(NSArray * _Nonnull asyncSets) {
+        NSLog(@"MKAsyncLauncher: over");
+    }];
 ```
